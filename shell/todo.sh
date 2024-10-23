@@ -1,8 +1,8 @@
-#!/bin/bash help.sh
+#!/bin/bash
 
 if [ $# -eq 0 ]; then
     if [ -s "data" ]; then
-        echo "to do :"
+        ./readData.sh
         exit 0
     else
         blue='\033[34m'
