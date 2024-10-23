@@ -8,7 +8,6 @@ if [ $# -eq 0 ]; then
         blue='\033[34m'
         reset='\033[0m'
         echo -e "Nothing to do :
-        use ${blue}-add${reset} to add something to do
         use ${blue}-help${reset} to see documentation"
         exit 0
     fi
@@ -28,8 +27,15 @@ try ${blue}-help add${reset} to add properly a new task"
         echo "Task $2 succesfuly add"
         exit 0
     fi
+
+elif [[ "$1" == "-del" ]] && [[ $# = 2 ]]; then
+    sed -i "/$2/d" data
+    echo "Delete task $2"
+    exit 0
+
 elif [ "$1" = "-help" ]; then
     ./help.sh "${@:2}"
+
 else
     ./help.sh
 fi
