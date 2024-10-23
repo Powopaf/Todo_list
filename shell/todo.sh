@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash help.sh
 
 if [ $# -eq 0 ]; then
     if [ -s "data" ]; then
@@ -20,7 +20,7 @@ elif [ "$1" = "-add" ]; then
         blue='\033[34m'
         echo -e "${red}Invalide argument to add a new task${reset}
 
-try ${blue}-help${reset} to add properly a new task"
+try ${blue}-help add${reset} to add properly a new task"
     exit 0
     else
         echo "" >> data
@@ -28,4 +28,8 @@ try ${blue}-help${reset} to add properly a new task"
         echo "Task $2 succesfuly add"
         exit 0
     fi
+elif [ "$1" = "-help" ]; then
+    ./help.sh "${@:2}"
+else
+    ./help.sh
 fi
