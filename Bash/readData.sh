@@ -17,10 +17,10 @@ color_msg() {
     if (( year > y )); then
         echo -e "${red}Task is passed : " 
      
-    elif (( month > m )); then
+    elif (( month > m && year == y )); then
         echo -e "${red}Task is passed : "
     
-    elif (( day > d && month > m)); then
+    elif (( day > d && month == m && year == y )); then
         echo -e "${red}Task is passed : "
     
     elif (( year < y )); then
@@ -29,7 +29,10 @@ color_msg() {
     elif (( day == d && month == m && year == y )); then
         echo -e "${red}Finish Today !! : "
     
-    elif (( ((month + 1) == m || month == m)  && ((day + 10) % 30) >= d )); then
+    elif (( (month + 1) == m  && ((day + 10) % 30) >= d )); then
+        echo -e "${orange}"
+
+    elif (( month == m && (day + 10) >= d )); then
         echo -e "${orange}"
     
     else
