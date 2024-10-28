@@ -8,41 +8,54 @@ orange='\033[33m'
 
 color_msg() {
     read -ra todo_date <<<"$1"
-    day= $(( $(date +'%d') ))
-    month= $(( $(date +'%m') ))
-    year= $(( $(date +'%Y') ))
-    y= $((${todo_date[3]}))
-    m= $((${toto_date[2]}))
-    d= $((${todo_date[1]}))
-    if (( year -gt y ))
-        echo "${green}" 
-    elif (( $year > $y )) || (( $month > $m )) || (( $day > $d )); then
-        echo "${red} Task is passed : "
-    elif (( year < y )) || (( month < $m )); then
-        echo "${green}"
+    day=$(($(date +'%d')))
+    month=$(($(date +'%m')))
+    year=$(($(date +'%Y')))
+    y=$((${todo_date[3]}))
+    m=$((${todo_date[2]}))
+    d=$((${todo_date[1]}))
+    if (( year > y )); then
+        echo -e "${red}Task is passed : " 
+     
+    elif (( month > m )); then
+        echo -e "${red}Task is passed : "
+    
+    elif (( day > d )); then
+        echo -e "${red}Task is passed : "
+    
+    elif ((  month < $m )); then
+        echo -e "${green}"
+    
+    elif (( year < y )); then
+        echo -e "${green}"
+    
     elif (( day == d )); then
-        echo "${red} Finish Today !! : "
-    elif (( $day + 15 >= $d )); then
-        echo "${orange}"
+        echo -e "${red}Finish Today !! : "
+    
+    elif (( day - 20 > 0 &&  day + 10 >= d )); then
+        echo -e "${orange}"
+    
     else
-        echo "${green}"
+        echo -e "${green}"
     fi
 }
 
-
-
 while IFS= read -r line; do
-  # Split the line into an array based on spaces
-  read -r -a array <<< "$line"
+    # Split the line into an array based on spaces
+    read -r -a array <<< "$line"
   
-  # build message to print
-  if [ -n "$line"  ]; then
-    msg=""
-    for item in "${array[@]}"; do
-        msg+="$item "
-    done
-    res=$(color_msg $msg)
-    res+="${reset}"
-  fi
+    # build message to print
+    if [ -n "$line"  ]; then
+        msg=""
+        res=""
+        for item in "${array[@]}"; do
+            msg+="$item "
+        done
+        #echo "$msg"
+        res+=$(color_msg "$msg")
+        res+="$msg"
+        res+="${reset}"
+        echo -e "$res"
+    fi
 done < "data"
 
