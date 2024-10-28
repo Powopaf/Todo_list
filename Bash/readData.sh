@@ -26,10 +26,10 @@ color_msg() {
     elif (( year < y )); then
         echo -e "${green}"
     
-    elif (( day == d )); then
+    elif (( day == d && month == m && year == y )); then
         echo -e "${red}Finish Today !! : "
     
-    elif (( ((day + 10) % 30) >= d )); then
+    elif (( ((month + 1) == m || month == m)  && ((day + 10) % 30) >= d )); then
         echo -e "${orange}"
     
     else
