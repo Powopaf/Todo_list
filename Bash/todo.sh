@@ -13,7 +13,7 @@ if [ $# -eq 0 ]; then
     fi
 
 elif [ "$1" = "-add" ]; then
-    if [ $# -ne 4 ]; then
+    if [ $# -ne 5 ]; then
         red='\033[31m'
         reset='\033[0m'
         blue='\033[34m'
@@ -23,7 +23,7 @@ try ${blue}-help add${reset} to add properly a new task"
     exit 0
     else
         echo "" >> data
-        echo "$2 $3 $4 0" >> data
+        echo "$2 $3 $4 $5" >> data
         echo "Task $2 succesfuly add"
         exit 0
     fi

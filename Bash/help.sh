@@ -2,7 +2,7 @@
 
 # display the definition of all flags
 
-add="to add a task use\n -add [task] [day] [month]\n"
+add="to add a task use\n -add [task] [day] [month] [year]\n"
 help_list=("$add")
 
 remove="to remove a taske use\n -del [task name]\n"
