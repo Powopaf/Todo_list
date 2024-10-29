@@ -12,4 +12,4 @@ todo: $(OBJ)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm todo *.o
+	rm todo *.o data
