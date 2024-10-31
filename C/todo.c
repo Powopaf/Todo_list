@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "verif.h"
 
 const char* task_filename = "data"; // if task_filename is change put the new
                                     // name in the .gitignore file
@@ -72,7 +73,7 @@ int read_data() {
         char* token = strtok(line, separator);
         while (token != NULL) {
             // TODO: call function for fancy color
-            printf("%s ", token);
+            printf("%s ", token); // will be replace
             token = strtok(NULL, separator);
         }
     }
@@ -84,8 +85,7 @@ int main(int argc, char* argv[]) {
         return read_data();
     }
 
-    else if (strcmp(argv[1], "add") == 0 && argc == 6) {
-        // TODO : make sure argv[2,3,4,5] are valid
+    else if (strcmp(argv[1], "add") == 0 && argc == 6 && check_date(argv[3], argv[4], argv[5]) == 'T') {
         return add(argv[2], argv[3], argv[4], argv[5]);
     }
 

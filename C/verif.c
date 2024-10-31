@@ -1,4 +1,8 @@
+#include <stdlib.h>
+
 char check_date(char* day, char* month, char* year) {
-  // TODO : check if the given date is valid
-  return EXIT_FAILURE;
+  if (atoi(day) != 0 && atoi(month) != 0 && atoi(year) != 0) {
+      return 'T';
+  }
+  return 'F';
 }
