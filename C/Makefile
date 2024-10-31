@@ -3,7 +3,8 @@ CFLAGS=-Wall -Wextra -g -fsanitize=address
 LIB= -fsanitize=address
 
 SRC=todo.c \
-	verif.c
+	verif.c \
+	color.c
 OBJ=$(SRC:.c=.o)
 
 todo: $(OBJ)

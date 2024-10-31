@@ -3,12 +3,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include "verif.h"
+#include "color.h"
 
 const char* task_filename = "data"; // if task_filename is change put the new
                                     // name in the .gitignore file
                                     // file is create if it do not exist
 
-int add(char* task, char* day, char* month, char* year) {
+static int add(char* task, char* day, char* month, char* year) {
     // write in the data file the new task to add
     // FORMAT :
     //\ntask day month year
@@ -41,7 +42,7 @@ int add(char* task, char* day, char* month, char* year) {
     return EXIT_SUCCESS;
 }
 
-int help(char display) {
+static int help(char display) {
     /*
      * diplay   = a -> print ONLY add help
      *          = \0 -> print all help possible
@@ -60,7 +61,7 @@ int help(char display) {
     }
 }
 
-int read_data() {
+static int read_data() {
     // print all line in the [task_filename]
     FILE* file = fopen(task_filename, "r");
     if (file == NULL) {
@@ -68,15 +69,21 @@ int read_data() {
         return EXIT_FAILURE;
     }
     const char* separator = " ";
-    char line[128]; 
+    char line[128];
+    char* to_print;
+    char* words[4];
+    size_t i = 0;
     while (fgets(line, 128, file) != NULL) {
         char* token = strtok(line, separator);
         while (token != NULL) {
-            // TODO: call function for fancy color
-            printf("%s ", token); // will be replace
+            words[i] = token;
             token = strtok(NULL, separator);
+            i++;
         }
     }
+    to_print = build_string(words[0], words[1], words[2], words[3]);
+    printf("%s", to_print);
+    free(to_print);
     return EXIT_SUCCESS;
 }
 
