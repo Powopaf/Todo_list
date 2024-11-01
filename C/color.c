@@ -41,7 +41,7 @@ char* build_string(char* task, char* day, char* month, char* year) {
     }
     else if (tm_local->tm_mon == atoi(month) && (tm_local->tm_mday + 10) >= atoi(day)) {
         str = malloc(sizeof(char) * length);
-        sprintf(str, "\033[33m%s %s %s %s\033[3m", task, day, month, year);
+        sprintf(str, "\033[33m%s %s %s %s\033[0m", task, day, month, year);
         return str;
     }
     else {

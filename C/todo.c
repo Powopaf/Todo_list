@@ -75,15 +75,16 @@ static int read_data() {
     size_t i = 0;
     while (fgets(line, 128, file) != NULL) {
         char* token = strtok(line, separator);
+        i = 0;
         while (token != NULL) {
             words[i] = token;
             token = strtok(NULL, separator);
             i++;
         }
+        to_print = build_string(words[0], words[1], words[2], words[3]);
+        printf("%s", to_print);
+        free(to_print);
     }
-    to_print = build_string(words[0], words[1], words[2], words[3]);
-    printf("%s", to_print);
-    free(to_print);
     return EXIT_SUCCESS;
 }
 
