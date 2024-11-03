@@ -1,3 +1,30 @@
 */data
 *.o
-*/todo
+C/todo
+# Ignore any generated artifacts by rustup or Cargo
+/.cargo/
+.cargo/
+.cargo-lock
+
+# Rust specific files
+**/*.rs.bk
+**/*.rs.swp
+**/*.rs.swo
+
+# If you're using clippy, ignore its logs and data
+.clippy
+
+# Logs and debug output
+*.log
+
+# Binaries
+*.exe
+*.out
+*.o
+*.so
+*.dylib
+*.dll
+*.rlib
+
+# Ignore lock files for Rust dependencies
+Cargo.lock
