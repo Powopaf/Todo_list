@@ -5,7 +5,7 @@ C/todo
 /.cargo/
 .cargo/
 .cargo-lock
-
+Rust/todo/target
 # Rust specific files
 **/*.rs.bk
 **/*.rs.swp
