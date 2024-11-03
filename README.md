@@ -12,6 +12,7 @@ The method use in the different projects are :
 
 ### Build Bash script
 Happy day no need to run `chmod` command I did it for you already to use in bash :)
-
+### Build C script
+Only need to go in the C directory and type make
 #### Note
 I will not implement interface
