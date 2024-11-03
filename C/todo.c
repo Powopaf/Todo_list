@@ -49,7 +49,6 @@ static int help(char display) {
      *          = \0 -> print all help possible
     */
     static char* g1 = "Bellow are the command you you can use for add and delete task\n";
-    char* g3 = "\033[35mhelp \033[0m\033[34del\033[0m to display add help only\n\033[35help\033[0m \033[34mdel\033[0m to diplay delete help onlyi\n";
     char* g2 = "Note that if no task where ever added ther will be error when printing task or deleting them\n";
     static char* help_add = "To add a new task the argument must be :\n\033[0;35madd\033[0m \033[0;34mtask day month year\033[0m\n";
     static char* help_del = "To delete a new task the do :\n\033[35mdel \033[0m\033[34mtask_name\033[0m\n";
@@ -62,8 +61,8 @@ static int help(char display) {
         return EXIT_SUCCESS;
     }
     else {
-        char* list_help[5] = { g1, g2, g3, help_add, help_del };
-        for (size_t i = 0; i < 5; i++) {
+        char* list_help[4] = { g1, g2, help_add, help_del };
+        for (size_t i = 0; i < 4; i++) {
             printf("%s", list_help[i]);
         }
     return EXIT_SUCCESS;
@@ -128,7 +127,7 @@ int main(int argc, char* argv[]) {
     else if (strcmp(argv[1], "del") == 0 && argc >= 2) {
             return delete_task(argv[2]);
     }
-    else if (strcmp(argv[1], "help") == 0 && argc == 2){
+    else if (strcmp(argv[1], "help") == 0 && argc == 3){
         if (strcmp(argv[2], "add") == 0) { return help('a'); }
         else if (strcmp(argv[2], "del") == 0) { return help('d'); }
         else { return help('\0'); }
